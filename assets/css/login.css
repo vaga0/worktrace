@@ -1,0 +1,67 @@
+        /* 登入頁面樣式 */
+        body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          background: linear-gradient(135deg, #667eea, #764ba2);
+          font-family: Arial, sans-serif;
+          margin: 0;
+      }
+
+      .login-container {
+          background: white;
+          padding: 2rem;
+          border-radius: 10px;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+          text-align: center;
+          width: 320px;
+      }
+
+      .login-container h2 {
+          margin-bottom: 1rem;
+          color: #333;
+      }
+
+      .login-container label {
+          display: block;
+          text-align: left;
+          font-weight: bold;
+          margin: 10px 0 5px;
+      }
+
+      .login-container input {
+          display: block;
+          width: calc(100% - 20px); /* 讓它比容器寬度小一點 */
+          padding: 10px;
+          margin: 0 auto 10px 0; /* 左對齊 */
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: 16px;
+          box-sizing: border-box;
+      }
+
+      .login-container button {
+          display: block;
+          width: calc(100% - 20px); /* 讓它比容器寬度小一點 */
+          padding: 10px;
+          background: #667eea;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          font-size: 16px;
+          cursor: pointer;
+          transition: 0.3s;
+          margin: 30px auto 0px 0; /* 左對齊 */
+          box-sizing: border-box;
+      }
+
+      .login-container button:hover {
+          background: #5a67d8;
+      }
+
+      #loginError {
+          color: red;
+          margin-top: 10px;
+          display: none;
+      }

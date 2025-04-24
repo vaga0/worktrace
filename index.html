@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工作日誌管理系統</title>
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
+<body>
+    <div id="loadingOverlay">
+        <div class="spinner">載入中...</div>
+    </div>
+
+    <div class="container">
+        <!-- 上方區塊：年與週數選擇 -->
+        <div class="top-bar">
+            <div>
+                <label for="year">選擇西元年:</label>
+                <select id="year">
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="week">選擇週數:</label>
+                <select id="week">
+                </select>
+            </div>
+
+            <button id="loadLog">載入工作日誌</button>
+
+            <!-- 新增的歡迎訊息區塊 -->
+            <div id="user_info" style="margin-left:auto; display:flex; align-items:center;">
+                <span id="welcomeUser">歡迎，使用者！</span>
+                <button id="logoutBtn">登出</button>
+            </div>
+        </div>
+
+        <!-- 下方區塊 -->
+        <div class="bottom-bar">
+            <!-- 左側：前一週 -->
+            <div class="left-side">
+                <div class="tool-bar tool-bar-left"><button class="add">新增</button><button class="edit">編輯</button></div>
+                <button class="toggle-btn left-toggle">-</button>
+                <h2>前一週工作日誌</h2>
+                <div id="previous-log" class="log-container pre"></div>
+            </div>
+
+            <!-- 右側：當前週 -->
+            <div class="right-side">
+                <div class="tool-bar tool-bar-right"><button class="add">新增</button><button class="edit">編輯</button></div>
+                <button class="toggle-btn right-toggle">-</button>
+                <h2>當前週工作日誌</h2>
+                <div id="current-log" class="log-container pre"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 模態視窗 (隱藏) -->
+    <div id="logEditorModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>編輯工作日誌</h2>
+            
+            <h3>週期：<span id="week_and_range"></span></h3>
+            <input id="real_year" name="year" style="display:none"/>
+            <input id="real_week" name="week" style="display:none"/>
+            <input id="real_date_range" name="real_date_range" style="display:none"/>
+
+            <label for="task_summary">摘要:</label>
+            <input type="text" id="task_summary">
+
+            <label for="total_hours">總時數:</label>
+            <input type="number" id="total_hours" min="0">
+
+            <!-- 任務分類 -->
+            <h3>任務分類</h3>
+            <div class="task-category">
+                <label>✅ 已完成的任務:</label>
+                <div id="tasks_completed_container">
+                    <input type="text" class="task-entry" placeholder="新增已完成任務">
+                </div>
+                <button class="add-task" data-target="#tasks_completed_container">新增</button>
+            </div>
+            
+            <div class="task-category">
+                <label>🔄 進行中的任務:</label>
+                <div id="tasks_in_progress_container">
+                    <input type="text" class="task-entry" placeholder="新增進行中任務">
+                </div>
+                <button class="add-task" data-target="#tasks_in_progress_container">新增</button>
+            </div>
+            
+            <div class="task-category">
+                <label>⏳ 計劃中但未開始:</label>
+                <div id="tasks_planned_container">
+                    <input type="text" class="task-entry" placeholder="新增計畫中任務">
+                </div>
+                <button class="add-task" data-target="#tasks_planned_container">新增</button>
+            </div>
+
+            <div class="task-category">
+                <label>🚧 暫緩:</label>
+                <div id="tasks_blocked_container">
+                    <input type="text" class="task-entry" placeholder="新增阻塞中任務">
+                </div>
+                <button class="add-task" data-target="#tasks_blocked_container">新增</button>
+            </div>
+
+            <label for="notes">📝 備註:</label>
+            <textarea id="notes" placeholder="請輸入內容"></textarea>
+
+            <div class="modal-footer">
+                <button id="saveLog">儲存</button>
+                <button id="cancelLog">取消</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/index.js"></script>
+</body>
+</html>
